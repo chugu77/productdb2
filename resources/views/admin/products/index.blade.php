@@ -2,31 +2,31 @@
 
 @section('content')
     
-<a href="{{route('admin.product.create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus-square-o"></i> Create Category</a>
+<a href="{{route('admin.product.create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus-square-o"></i> Create Product</a>
 <table class="table table-striped">
   <thead>
     <th>ID</th>
-    <th>Category</th>
-    <th>Left</th>
-    <th>Right</th>
-    <th>Parent ID</th>
+    <th>Category ID</th>
+    <th>Product Name</th>
+    <th>Description</th>
+    <th>Image</th>
     <th class="text-right">Action</th>
   </thead>
   <tbody>
-    @forelse ($categories as $category)
+    @forelse ($products as $product)
       <tr>
-        <td>{{$category->id}}</td>
-        <td>{{$category->category}}</td>
+        <td>{{$product->id}}</td>
+        <td>{{$product->category_id}}</td>
 
-        <td>{{$category->_lft}}</td>
-        <td>{{$category->_rgt}}</td>
-        <td>{{$category->parent_id}}</td>
+        <td>{{$product->product_name}}</td>
+        <td>{{$product->description}}</td>
+        <td>{{$product->image}}</td>
 
         <td style="text-align:right">
-          <form method="post" onsubmit="if(confirm('You are about to delete node and all its subtree. Are you sure')){return true}else{return false}" action="{{route('admin.category.destroy', $category)}}">
+          <form method="post" onsubmit="if(confirm('You are about to delete product. Are you sure')){return true}else{return false}" action="{{route('admin.product.destroy', $product)}}">
           <input type="hidden" name="_method" value="DELETE">
           {{ csrf_field() }}
-          <a href="{{route('admin.category.edit', $category)}}"><i class="fa fa-edit"></i></a>
+          <a href="{{route('admin.product.edit', $product)}}"><i class="fa fa-edit"></i></a>
           <button type="submit" class="btn"><i class="fa fa-trash-o"></i></button>
           </form>          
         </td>
@@ -38,7 +38,7 @@
     @endforelse
     <tfoot>
       <tr>
-        <td colspan="3">{{$categories->links()}}</td>
+        <td colspan="3">{{$products->links()}}</td>
       </tr>
     </tfoot>
   </tbody>

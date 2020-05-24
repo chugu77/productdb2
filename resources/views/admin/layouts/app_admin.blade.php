@@ -18,6 +18,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div id="app">
@@ -37,7 +39,7 @@
                             <a class="nav-link" href="{{route('admin.index')}}">Dashboard </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('admin.index')}}">Categories </a>
+                            <a class="nav-link" href="{{route('admin.category.index')}}">Categories </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('admin.index')}}">Products </a>

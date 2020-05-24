@@ -13,7 +13,10 @@
 
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function() {
-    route::get('/', 'DashboardController@index')->name('admin.index');
+    route::get('/', 'DashboardController@index')->name('admin.index');    
+    Route::get('/category/fill', 'CategoryController@fill', ['as'=>'admin'])->name('admin.category.fill');
+    Route::get('/category/truncate', 'CategoryController@truncate', ['as'=>'admin'])->name('admin.category.truncate');
+    Route::resource('/category', 'CategoryController', ['as'=>'admin']);    
 });
 
 

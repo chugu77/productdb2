@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -29,7 +30,8 @@ class ProductController extends Controller
     {
         return view('admin.products.create', [
             'product'=> [],
-            'categories' => []
+            'categories' => Category::with('children')->where('parent_id', null)->get(),
+            'delimiter' => ""
         ]);
     }
 
@@ -41,7 +43,9 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Product::create($request->all());
+        return redirect()->route('admin.product.index');
+
     }
 
     /**
@@ -63,7 +67,11 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('admin.products.edit', [
+            'product'=> $product,
+            'categories' => Category::with('children')->where('parent_id', null)->get(),
+            'delimiter' => ""
+        ]);
     }
 
     /**
@@ -75,7 +83,8 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $product->update($request->all());
+        return redirect()->route('admin.product.index');
     }
 
     /**
@@ -86,6 +95,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('admin.product.index');
     }
 }

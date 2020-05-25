@@ -38,7 +38,7 @@
     @endforelse
     <tfoot>
       <tr>
-        <td colspan="3">{{$products->links()}}</td>
+        <td colspan="6">{{$products->links()}}</td>
       </tr>
     </tfoot>
   </tbody>

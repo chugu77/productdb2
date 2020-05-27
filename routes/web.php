@@ -25,9 +25,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
 });
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'GuestController@index')->name('public.index');
 
 Auth::routes();
 

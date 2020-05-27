@@ -64,8 +64,8 @@
         </div>
     </div>
 
-<div class="row">
+{{--  <div class="row">
     @include('admin.categories.components.tree', ['categories'=>$categories])
-</div>
+</div>  --}}
 
 @endsection

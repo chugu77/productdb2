@@ -1,6 +1,6 @@
 @foreach ($categories as $category_list)
 
- <li data-id="{{$category_list->id ?? ""}}">  {{$category_list->category ?? ""}} 
+ <li data-id="{{$category_list->id ?? ""}}">  {{$category_list->category ?? ""}} [{{$category_list->id ?? ""}}]
 
   @if (count($category_list->children) > 0)
 <ul>

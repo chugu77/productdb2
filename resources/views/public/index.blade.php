@@ -12,7 +12,11 @@
               {{--  <button>demo button</button>  --}}
 
             </div>
-            <div class="col">2</div>
+            <div class="col">
+
+
+                
+            </div>
         </div>
     </div>
 @endsection

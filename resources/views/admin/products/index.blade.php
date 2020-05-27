@@ -20,7 +20,14 @@
 
         <td>{{$product->product_name}}</td>
         <td>{{$product->description}}</td>
-        <td>{{$product->image}}</td>
+        <td>
+          @isset($product->image)
+          
+          <img src="{{asset('images/')}}/{{$product->image}}" width="50px">
+     
+          @endisset
+
+        </td>
 
         <td style="text-align:right">
           <form method="post" onsubmit="if(confirm('You are about to delete product. Are you sure')){return true}else{return false}" action="{{route('admin.product.destroy', $product)}}">

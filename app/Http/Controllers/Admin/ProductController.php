@@ -43,9 +43,30 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        Product::create($request->all());
-        return redirect()->route('admin.product.index');
+        // Product::create($request->all());
+        // return redirect()->route('admin.product.index');
 
+        $this->validate($request, [
+            'product_name' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'category_id' => 'required'
+        ]);
+        
+        $product = new Product($request->input()) ;
+     
+         if($file = $request->hasFile('image')) {
+            
+            $file = $request->file('image') ;
+            
+            $fileName = $file->getClientOriginalName() ;
+            $destinationPath = public_path().'/images/' ;
+            $file->move($destinationPath,$fileName);
+            $product->image = $fileName ;
+        }
+        $product->save() ;
+         return redirect()->route('admin.product.index')
+                        ->with('success','You have successfully uploaded your files');
+   
     }
 
     /**
@@ -83,7 +104,25 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $product->update($request->all());
+        $this->validate($request, [
+            'product_name' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'category_id' => 'required'
+        ]);
+       //dd($request);
+        if ($request->hasFile('image')){
+            $file = $request->file('image') ;
+            
+            $fileName = $file->getClientOriginalName() ;
+            $destinationPath = public_path().'/images/' ;
+            $file->move($destinationPath,$fileName);
+            $product->image = $fileName ;
+            $product->save() ;
+        }
+        else {
+            $product->update($request->except(['image']));
+        }
+        
         return redirect()->route('admin.product.index');
     }
 

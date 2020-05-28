@@ -24,8 +24,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
 
 });
 
+Route::post('/children', 'GuestController@getCategoryChildren');
 
 Route::get('/', 'GuestController@index')->name('public.index');
+
+
 
 Auth::routes();
 

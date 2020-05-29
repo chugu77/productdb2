@@ -5,6 +5,10 @@
  */
 
 require('./bootstrap');
+require('jstree');
+import 'jstree/dist/themes/default/style.min.css';
+require('bootstrap-table');
+import 'bootstrap-table/dist/bootstrap-table.css';
 
 //window.Vue = require('vue');
 

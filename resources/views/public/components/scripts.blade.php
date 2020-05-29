@@ -19,7 +19,7 @@ $('#jstree').on("changed.jstree", function (e, data) {
         $('#table').bootstrapTable('destroy').bootstrapTable({
             data: response.data,
             formatLoadingMessage: function() {
-                return "<font color='red'>დაელოდეთ...</font>";
+                return "<font color='gray'>დაელოდეთ...</font>";
             }
         });
         $('#table').bootstrapTable('hideLoading');

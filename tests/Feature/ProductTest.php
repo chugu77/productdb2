@@ -17,7 +17,7 @@ class ProductTest extends TestCase
     // }
 
     /** @test */
-    public function logged_in_user_can_manage_products()
+    public function logged_in_user_can_not_manage_products()
     {
         $response = $this->get('/admin/product')
         ->assertRedirect('/login');

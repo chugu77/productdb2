@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 Use DB;
 use App\Category;
+use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -175,59 +176,66 @@ class CategoryController extends Controller
     }
 
     public function fill(){
-        DB::beginTransaction();
-        try {
-            Category::truncate();
+        // DB::beginTransaction();
+        // try {
+        //     Category::truncate();
 
-            $node = Category::create([
-                'category' => 'პროდუქცია',
+        //     $node = Category::create([
+        //         'category' => 'პროდუქცია',
             
-                'children' => [
-                    [
-                        'category' => 'საყოფაცხოვრებო ტექნიკა',
+        //         'children' => [
+        //             [
+        //                 'category' => 'საყოფაცხოვრებო ტექნიკა',
             
-                        'children' => [
-                            [ 'category' => 'მაცივრები' ],
-                        ],
-                    ],[
-                        'category' => 'საყოფაცხოვრებო ტექნიკა',
+        //                 'children' => [
+        //                     [ 'category' => 'მაცივრები' ],
+        //                 ],
+        //             ],[
+        //                 'category' => 'საყოფაცხოვრებო ტექნიკა',
             
-                        'children' => [
-                            [ 'category' => 'მაცივრები' ],
-                        ],
-                    ],[
-                        'category' => 'საყოფაცხოვრებო ტექნიკა',
+        //                 'children' => [
+        //                     [ 'category' => 'მაცივრები' ],
+        //                 ],
+        //             ],[
+        //                 'category' => 'საყოფაცხოვრებო ტექნიკა',
             
-                        'children' => [
-                            [ 'category' => 'მაცივრები' ],
-                        ],
-                    ],[
-                        'category' => 'საყოფაცხოვრებო ტექნიკა',
+        //                 'children' => [
+        //                     [ 'category' => 'მაცივრები' ],
+        //                 ],
+        //             ],[
+        //                 'category' => 'საყოფაცხოვრებო ტექნიკა',
             
-                        'children' => [
-                            [ 'category' => 'მაცივრები' ],
-                        ],
-                    ],[
-                        'category' => 'საყოფაცხოვრებო ტექნიკა',
+        //                 'children' => [
+        //                     [ 'category' => 'მაცივრები' ],
+        //                 ],
+        //             ],[
+        //                 'category' => 'საყოფაცხოვრებო ტექნიკა',
             
-                        'children' => [
-                            [ 'category' => 'მაცივრები' ],
-                        ],
-                    ],
-                    [
-                        'category' => 'დაზგა-დანადგარები'
-                    ],
-                ],
-            ]);    
+        //                 'children' => [
+        //                     [ 'category' => 'მაცივრები' ],
+        //                 ],
+        //             ],
+        //             [
+        //                 'category' => 'დაზგა-დანადგარები'
+        //             ],
+        //         ],
+        //     ]);    
 
-            DB::commit();
-        } catch (Exception $e) {
-            DB::rollback();
-            Log::error($e->errorMessage());
-            throw $e;
-        } 
-       
+        //     DB::commit();
+        // } catch (Exception $e) {
+        //     DB::rollback();
+        //     Log::error($e->errorMessage());
+        //     throw $e;
+        // } 
+
+        Category::truncate();
+        Product::truncate();
+        $products = factory(Product::class, 10)->create();
+        $categories = Category::where('id', '>', 5)->get();
+        foreach ($categories as $cat) {
+            $cat->appendToNode(Category::first())->save();
+        }
         
-            return redirect()->route('admin.category.index');
+        return redirect()->route('admin.category.index');
     }
 }

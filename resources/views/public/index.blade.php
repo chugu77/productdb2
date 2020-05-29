@@ -23,7 +23,7 @@
                       <th data-field="category_id">Category ID</th>
                       <th data-field="product_name">Product Name</th>
                       <th data-field="description">Description</th>
-                      <th data-field="image">Image</th>
+                      <th data-field="image" data-formatter="LinkFormatter">Image</th>
                     </thead>
                     <tbody>
                     </tbody>

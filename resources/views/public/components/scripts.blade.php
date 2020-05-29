@@ -2,6 +2,10 @@
 
 $("#jstree").jstree();
 
+function LinkFormatter(value, row, index) {
+    return "<a target='_blank' href='/images/"+value+"'> <img width='25' src='/images/"+value+"'></a>";
+  }
+
 $('#jstree').on("changed.jstree", function (e, data) {
     var node_id   = (data.node.id); // element id
     var id = $("#"+(data.node.id)).attr("data-id");
@@ -22,7 +26,7 @@ $('#jstree').on("changed.jstree", function (e, data) {
       }, (error) => {
         console.log(error);
       });
-
+    
     $('#table').bootstrapTable('refresh'); 
 
 });

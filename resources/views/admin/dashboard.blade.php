@@ -6,7 +6,7 @@
         <div class="col">
             <div class="jumbotron jumbotron-fluid bg-info">
                 <div class="container">
-                    <h1>Categories {{$categoriesCount}}</h1>
+                    <h1><a href="{{route('admin.category.index')}}">Categories {{$categoriesCount}}</a></h1>
                     <p class="lead">count of categories</p>
                 </div>
             </div>
@@ -14,7 +14,7 @@
         <div class="col">
             <div class="jumbotron jumbotron-fluid bg-success">
                 <div class="container">
-                    <h1>Products {{$productsCount}}</h1>
+                    <h1><a href="{{route('admin.product.index')}}">Products {{$productsCount}}</a></h1>
                     <p class="lead">count of products</p>
                 </div>
             </div>

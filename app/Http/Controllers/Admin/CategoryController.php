@@ -189,6 +189,30 @@ class CategoryController extends Controller
                         'children' => [
                             [ 'category' => 'მაცივრები' ],
                         ],
+                    ],[
+                        'category' => 'საყოფაცხოვრებო ტექნიკა',
+            
+                        'children' => [
+                            [ 'category' => 'მაცივრები' ],
+                        ],
+                    ],[
+                        'category' => 'საყოფაცხოვრებო ტექნიკა',
+            
+                        'children' => [
+                            [ 'category' => 'მაცივრები' ],
+                        ],
+                    ],[
+                        'category' => 'საყოფაცხოვრებო ტექნიკა',
+            
+                        'children' => [
+                            [ 'category' => 'მაცივრები' ],
+                        ],
+                    ],[
+                        'category' => 'საყოფაცხოვრებო ტექნიკა',
+            
+                        'children' => [
+                            [ 'category' => 'მაცივრები' ],
+                        ],
                     ],
                     [
                         'category' => 'დაზგა-დანადგარები'

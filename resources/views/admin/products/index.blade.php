@@ -22,8 +22,9 @@
         <td>{{$product->description}}</td>
         <td>
           @isset($product->image)
-          
+          <a href="{{asset('images/')}}/{{$product->image}}" >
           <img src="{{asset('images/')}}/{{$product->image}}" width="50px">
+          </a>
      
           @endisset
 
